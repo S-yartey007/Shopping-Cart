@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { fetchProducts } from "../../api/fetchProducts";
+import ProductCart from "../../components/ProductCart/ProductCart";
 
-const Shoppage = () => {
-  return <div>Welcome to our Store!</div>;
-};
+function ShopPage({ addToCart }) {
+  const [products, setProducts] = useState([]);
 
-export default Shoppage;
+  useEffect(() => {
+    fetchProducts().then((data) => {
+      setProducts(data);
+    });
+  }, []);
+
+  return (
+    <div>
+      {products.map((product) => (
+        <ProductCart key={product.id} product={product} addToCart={addToCart} />
+      ))}
+    </div>
+  );
+}
+
+export default ShopPage;

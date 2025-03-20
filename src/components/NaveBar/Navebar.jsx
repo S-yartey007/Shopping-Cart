@@ -1,17 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navebar = () => {
+function Navbar({ cartItemCount }) {
   return (
-    <div>
-      <div>
-        <Link to="/homepage">Homepage</Link>
-      </div>
-      <div>
-        <Link to="/shopping">Shopping Page</Link>
-      </div>
-    </div>
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/shop">Shop</Link>
+        </li>
+        <li>Cart: {cartItemCount} items</li>
+      </ul>
+    </nav>
   );
-};
+}
 
-export default Navebar;
+export default Navbar;
